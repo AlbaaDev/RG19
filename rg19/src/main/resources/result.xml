@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:feed xmlns:ns2="http://univ.fr/rg19" lang="fr">
+  <title>flux 1</title>
+  <pubDate>2012-12-12 T12:12:12:00Z</pubDate>
+  <id>http://www.test.com</id>
+  <link rel="alternate" type="text/html" href="http://www.test.com" />
+  <entry id="1">
+    <id>http://www.test.com</id>
+    <title>Article 1</title>
+    <category term="fr" />
+    <published>2012-12-12 T12:12:12:00Z</published>
+    <image type="jpeg" href="https://picsum.photos/600" alt="image article" length="3" />
+    <content type="src" href="http://www.test.com" />
+  </entry>
+</ns2:feed>

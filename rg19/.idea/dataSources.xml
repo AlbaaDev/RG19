@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="rg19@localhost" uuid="56bfbf88-2730-4894-8695-ba7044624f23">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/rg19</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="CloudandDB - rg19" uuid="3284b6a1-5c3c-4025-ac7c-ed2e9b246401">
+      <driver-ref>java.sql.Driver</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>cdata.jdbc.cloudant.CloudantDriver</jdbc-driver>
+      <jdbc-url>jdbc:cloudant:User=de42270a-bc13-4323-aeac-111a3cbef250-bluemix; Password=9a0944259c9d9fc6ff4c9ee963c35254b34ab3fffb800a1053118bf62052b81d;</jdbc-url>
+    </data-source>
+  </component>
+</project>

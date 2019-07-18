@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://univ.fr/rg19" xmlns="http://univ.fr/rg19" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="feed" type="feedType"/>
+  <xs:complexType name="feedType">
+    <xs:sequence >
+      <xs:element name="title" type="textType"/>
+      <xs:element name="pubDate" type="dateType"/>
+      <xs:element name="id" type="url" />
+      <xs:element name="link" type="linkType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element  name="entry" type="entryType" maxOccurs="10"  />
+    </xs:sequence>
+    <xs:attribute name="lang"  type="langType" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="langType">
+    <xs:restriction base="xs:string" >
+      <xs:pattern value="[a-z]{2,3}(-[A-Z]{2}|-[0-9]{3})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="textType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="128"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dateType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}-\d{2}-\d{2}\s?[Tt]?[0-2][0-9]:[0-5][0-9]:[0-5][0-9]:[0-9][0-9][Zz]?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="url">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([a-z]{4,5}://)?([a-z0-9_\-]+(:[a-z0-9_\-]+)?@)?([a-z0-9_\-]+\.)?([a-z0-9_\-]+\.)[a-z]+(/([.a-zA-Z0-9~]+/?)?(/\?(([a-z0-9_\-]+=[a-z0-9_\-]+&#38;?)+)?)?(#[a-z0-9_\-]+)?)?" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="linkType">
+    <xs:attribute name="rel" type="relType" use="required"/>
+    <xs:attribute name="type" type="mimeType" use="required"/>
+    <xs:attribute name="href" type="url" use="required"/>
+  </xs:complexType>
+  <xs:simpleType name="relType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="self"/>
+      <xs:enumeration value="alternate"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="mimeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z]+/[a-zA-Z]+(\+[a-zA-Z]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="entryType">
+    <xs:sequence>
+      <xs:element name="id" type="url"/>
+      <xs:element name="title" type="textType" />
+      <xs:element name="category" type="categoryType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice>
+        <xs:element name="published"  type="dateType" />
+        <xs:element name="updated" type="dateType"/>
+      </xs:choice>
+      <xs:element name="image" type="imageType" minOccurs="0" />
+      <xs:element  name="content" type="contentType" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="author" type="personneType"/>
+        <xs:element name="contributor" type="personneType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int"/>
+  </xs:complexType>
+  <xs:complexType name="categoryType">
+    <xs:attribute name="term" type="textType" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="imageType">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="gif"/>
+          <xs:enumeration value="jpeg"/>
+          <xs:enumeration value="png"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="href" type="url" use="required"/>
+    <xs:attribute name="alt" type="textType" use="required"/>
+    <xs:attribute  name="length" type="xs:int"/>
+  </xs:complexType>
+  <xs:complexType name="contentType" >
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="text" />
+              <xs:enumeration value="src"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      <xs:attribute name="href" type="url"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="personneType">
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element  name="email" type="emailType"  minOccurs="0"/>
+      <xs:element name="uri" type="url" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="emailType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9()]+@[a-zA-Z0-9()]+\.[a-z]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
