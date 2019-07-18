@@ -1,6 +1,6 @@
-1.Clique droit + Lancer application avec Java 8
+1.Clique droit sur Clientrg19 + Lancer application avec Java 8
 
-2.Rentrez l'url d'exemple fourni 
+2.Rentrez l'url fourni en exemple
 
 3.Patientez un peu au premier démarrage
 
