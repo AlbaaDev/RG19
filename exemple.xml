@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:feed xmlns:ns2="http://univ.fr/rg19" lang="fr">
+  <title>Feed with no option</title>
+  <pubDate>2012-12-12 T12:12:12:00Z</pubDate>
+  <id>http://www.test.com</id>
+  <entry id="1">
+    <id>http://www.test.com</id>
+    <title>Article 1 Feed no option</title>
+    <published>2012-12-12 T12:12:12:00Z</published>
+    <content type="src" href="http://www.test.com" />
+  </entry>
+</ns2:feed>
